@@ -1,0 +1,29 @@
+import { createSlide } from './createSlide.js';
+
+export default function slide05() {
+    return createSlide({
+        agendaItem: '2',
+        content: /* html */`
+            <div class="slide-content-split">
+                <div class="text-content">
+                    <div class="kicker">2. Estado Actual: "Centauri"</div>
+                    <h2>Plataforma de Operaciones Inteligente</h2>
+                    <p>Un sistema centralizado que utiliza <strong>Machine Learning</strong> para predecir la demanda, optimizar rutas y automatizar la asignación de tareas.</p>
+                    <ul style="text-align: left; margin-left: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>Dashboard Predictivo:</strong> Visualización en tiempo real de KPIs.</li>
+                        <li><strong>Motor de Optimización:</strong> Algoritmos que aprenden y mejoran.</li>
+                        <li><strong>Integración Total:</strong> Conexión nativa con ERP y CRM.</li>
+                    </ul>
+                </div>
+                <div class="visual-content">
+                    <svg class="icon-svg" style="width: 180px; height: 180px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                        <path d="M8 11l3 3 5-5"></path>
+                    </svg>
+                </div>
+            </div>
+        `,
+    });
+}
