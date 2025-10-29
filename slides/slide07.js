@@ -1,0 +1,17 @@
+import { createSlide } from './createSlide.js';
+
+export default function slide07() {
+    return createSlide({
+        agendaItem: '3',
+        content: /* html */`
+            <div class="kicker">3. Análisis Conjunto y Sinergias Dx y Tx</div>
+            <h2>Identificando Oportunidades Cruzadas</h2>
+            <p>[Contenido de ejemplo] Nuestro análisis de la plataforma "Centauri" (Dx) revela sinergias directas con las operaciones de tratamiento (Tx).</p>
+            <ul style="text-align: left; margin-top: 2rem; max-width: 700px; font-size: 1.1rem; line-height: 1.8;">
+                <li>Sinergia 1: Reducción de tiempos de espera en...</li>
+                <li>Sinergia 2: Optimización de inventario compartido...</li>
+                <li>Sinergia 3: Creación de un "score" de prioridad unificado...</li>
+            </ul>
+        `,
+    });
+}
