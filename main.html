@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación Ejecutiva: Proyecto Innovación</title>
+    <title>Comité innovación</title>
     
     <style>
         :root {
-            /* --- PALETA CON MORADO COMO PRINCIPAL --- */
             --color-bg: #ffffff;
-            --color-primary: #4f1fff;        /* Morado Principal (Títulos, Iconos, Highlights) */
-            --color-text: #092754;           /* Texto principal (Azul muy oscuro) */
-            --color-text-secondary: #074177; /* Azul secundario (para fondos o acentos) */
-            --color-accent: #ffff39;         /* Amarillo (Solo barra de progreso) */
-            --color-ui-bg: #d0eeff;          /* Azul claro (Fondo columnas) */
-            --color-muted: #dbe4ed;          /* Gris azulado (Subtítulos, Texto apagado) */
+            --color-primary: #4f1fff;        
+            --color-text: #092754;           
+            --color-text-secondary: #074177; 
+            --color-accent: #4f1fff;         
+            --color-ui-bg: #d0eeff;          
+            --color-muted: #adb5bd;          
+            --color-bar-escalamiento: #a9b5d7; 
+            --color-bar-pilotos: #074177; 
+            --color-chart-clientes: #a5d6a7; 
+            --color-chart-desarrollo: #64b5f6; 
+            --color-chart-control: #81c784; 
+            --color-chart-planificacion: #78909c; 
+            --color-chart-proyectosdx: #42a5f5; 
+            --color-chart-operacionesdx: #ffee58; 
+            --color-slide-bg-light: #f8f9fa; 
+
 
             --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
-        /* --- Reseteo y Base --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,13 +38,12 @@
         html, body {
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mantenemos esto para el slide-deck */
+            overflow: hidden; 
             font-family: var(--font-main);
             color: var(--color-text);
             background-color: var(--color-bg);
         }
 
-        /* --- Estructura de la Presentación --- */
         .presentation-container {
             position: relative;
             width: 100vw;
@@ -49,18 +56,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            padding: 6rem 5rem 5rem 5rem; /* Padding base */
+            padding: 6rem 5rem 5rem 5rem; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center; 
             align-items: center;
             text-align: center;
+            background-color: var(--color-bg); 
             
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             transform: scale(0.98);
         }
+        
+        .slide[data-agenda-item="3"] {
+             background-color: var(--color-slide-bg-light);
+        }
+
+
+        .slide.scrollable {
+             overflow-y: auto; 
+             justify-content: flex-start; 
+             padding-top: 6rem; 
+             padding-bottom: 3rem; 
+        }
+
 
         .slide.active {
             opacity: 1;
@@ -68,12 +89,30 @@
             transform: scale(1);
         }
 
-        /* --- Estilos de Contenido --- */
         .slide h1, .slide h2, .slide h3 {
             font-family: var(--font-heading);
             font-weight: 700;
             margin-bottom: 1rem;
         }
+        
+        .section-title { 
+             font-family: var(--font-heading); 
+             font-size: 1.9rem; 
+             font-weight: 700;
+             color: var(--color-text);
+             margin-bottom: 2rem; 
+             text-align: center;
+             width: 100%; 
+             text-decoration: underline;
+             text-decoration-color: var(--color-primary); 
+             text-underline-offset: 7px; 
+             padding-bottom: 0.2rem; 
+        }
+
+        .value-capture-title { 
+             margin-top: 0; 
+        }
+
 
         .slide h1 {
             font-size: 4.5rem;
@@ -85,8 +124,17 @@
             font-size: 3rem;
             color: var(--color-text);
         }
+        
+        .slide.chart-slide h2 {
+            font-size: 2rem; 
+            margin-bottom: 0.5rem; 
+            text-align: left; 
+            width: 100%; 
+            max-width: 1400px; 
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-        /* Párrafo por defecto dentro de un slide */
         .slide > p { 
             font-size: 1.25rem;
             line-height: 1.6;
@@ -94,28 +142,26 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Estilos específicos para párrafos dentro de cajas */
         .lesson-box p {
             font-size: 1rem; 
             line-height: 1.6;
             max-width: none;
-            margin-bottom: 0.8rem; /* Espacio antes de la lista */
+            margin-bottom: 0.8rem; 
         }
         
         .lesson-box ul {
             list-style-position: outside;
-            padding-left: 1.5rem; /* Indentación para bullets */
-            margin-top: 0; /* Sin margen superior extra */
+            padding-left: 1.5rem; 
+            margin-top: 0; 
             text-align: left;
         }
         
         .lesson-box li {
             font-size: 1rem; 
             line-height: 1.6;
-            margin-bottom: 0.5rem; /* Espacio entre puntos */
+            margin-bottom: 0.5rem; 
             max-width: none;
         }
-
 
         .kicker {
             font-size: 1rem;
@@ -124,6 +170,24 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
+            width: 100%; 
+             max-width: 1400px; 
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .status-tag {
+            background-color: var(--color-primary); 
+            color: white; 
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem; 
+            display: inline-block; 
         }
 
         .subtitle {
@@ -131,6 +195,40 @@
             color: #6c757d;
             font-weight: 300;
         }
+
+        .content-card { 
+            background-color: var(--color-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 3rem; 
+            max-width: 1200px; 
+            width: 100%;
+            margin: 0 auto 3rem auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .scrollable .content-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-card {
+            background-color: var(--color-bg);
+            border-radius: 16px; 
+            border: 1px solid #e8e8e8; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07); 
+            padding: 2.5rem 3rem; 
+            width: 100%;
+            max-width: 1400px; 
+            margin: 0 auto 4rem auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+         .scrollable .section-card:last-child {
+            margin-bottom: 0;
+        }
+
 
         .slide-content-split {
             display: flex;
@@ -143,6 +241,9 @@
         .slide-content-split .text-content {
             flex-basis: 50%;
             text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
         }
 
         .slide-content-split .visual-content {
@@ -151,15 +252,38 @@
             justify-content: center;
             align-items: center;
         }
-
-        /* --- Estilos de Diapositivas Específicas --- */
         
+        .visual-content img {
+            width: 450px;  
+            height: 300px; 
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            object-fit: cover; 
+            transition: transform 0.3s ease-in-out; 
+        }
+
+        .visual-content img:hover {
+            transform: scale(1.02); 
+        }
+
         .slide.title-slide {
             justify-content: center;
             align-items: flex-start;
             text-align: left;
             padding: 6rem;
+            position: relative; /* Necesario para posicionar el logo absolutamente dentro */
         }
+        
+        /* Estilo para el logo */
+        #logo-corporativo {
+            position: absolute;
+            top: 2rem;  /* Ajusta según necesites */
+            right: 3rem; /* Ajusta según necesites */
+            width: 250px; /* Ancho fijo */
+            height: auto; /* Mantener proporción */
+            z-index: 10;
+        }
+
         
         .slide.title-slide .kicker {
             color: var(--color-text);
@@ -184,59 +308,102 @@
             display: flex;
             gap: 2rem;
             width: 100%;
-            max-width: 1200px; /* Ancho ajustado para 4 columnas */
+            max-width: 1200px; 
             margin-top: 2rem;
         }
         .column {
-            flex: 1; /* Distribuye el espacio equitativamente */
+            flex: 1; 
             background-color: var(--color-ui-bg);
             border-radius: 8px;
-            padding: 1.5rem; /* Padding reducido para más texto */
+            padding: 1.5rem; 
             text-align: left;
             border-bottom: 4px solid var(--color-primary);
         }
         .column h3 {
             color: var(--color-primary);
-            font-size: 1.3rem; /* Títulos un poco más pequeños */
+            font-size: 1.3rem; 
         }
         .column p {
-            font-size: 0.9rem; /* Texto un poco más pequeño */
-            line-height: 1.5; /* Línea más ajustada */
-            margin-bottom: 0; /* Sin margen inferior en párrafos de columnas */
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+            margin-bottom: 0; 
         }
 
-        .chart-container {
-            width: 100%;
-            max-width: 700px;
-            height: 400px;
-            font-family: var(--font-main);
-        }
-
-        .chart-container svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .bar {
-            transform-origin: bottom;
-            animation: grow 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            opacity: 0;
+        .slide.chart-slide {
+            justify-content: flex-start; 
+             padding-top: 4rem; 
         }
         
-        .bar-1 { animation-delay: 0.1s; }
-        .bar-2 { animation-delay: 0.3s; }
-        .bar-3 { animation-delay: 0.5s; }
-        .bar-4 { animation-delay: 0.7s; }
+        .chart-split-layout {
+            display: flex;
+            width: 100%;
+            max-width: 1400px; 
+            margin: 1rem auto 0 auto; 
+            gap: 2rem; 
+            align-items: flex-start; 
+        }
 
-        @keyframes grow {
-            from {
-                transform: scaleY(0);
-                opacity: 0;
-            }
-            to {
-                transform: scaleY(1);
-                opacity: 1;
-            }
+        .chart-container-innovation {
+            flex: 2; 
+            position: relative;
+        }
+
+        .chart-container-innovation svg {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 550px; 
+            display: block;
+            overflow: visible; 
+        }
+        
+        .axis-line { stroke: #cccccc; stroke-width: 1.5; }
+        .chart-tick { stroke: #cccccc; stroke-width: 1; }
+        .axis-label-innovation { font-size: 14px; font-weight: 600; fill: #666666; text-anchor: middle; }
+        .month-label-innovation { font-size: 12px; fill: #666666; text-anchor: middle; }
+        .stage-content-innovation { font-size: 11px; fill: #000000; text-anchor: start; line-height: 1.4em; }
+        .stage-content-innovation tspan { font-weight: 400; } 
+        
+        .madurez-shaded-area { fill: #EDE7F6; fill-opacity: 0.8; stroke: none; }
+        
+        .maturity-curve { fill: none; stroke: #9B59B6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawCurve 3s ease-in-out forwards; }
+        
+        @keyframes drawCurve { to { stroke-dashoffset: 0; } }
+
+        .stage-label-box { fill: #ffffff; stroke: #9B59B6; stroke-width: 1; }
+        .stage-label-text { font-size: 13px; font-weight: 600; fill: #333333; text-anchor: middle; text-transform: uppercase; }
+
+        .stats-stack {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; 
+            justify-content: space-around; 
+             height: 550px; 
+        }
+        .stat-card {
+            background-color: var(--color-ui-bg);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-left: 6px solid var(--color-primary); 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .stat-card h4 { 
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .stat-card .stat-value { 
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
         }
 
         .slide.end-slide {
@@ -246,12 +413,11 @@
             color: #ffffff;
         }
         .slide.end-slide p {
-            color: var(--color-muted);
+            color: #dbe4ed; 
         }
 
-        /* --- Iconos SVG --- */
         .icon-svg {
-            width: 50px; /* Iconos más pequeños en columnas */
+            width: 50px; 
             height: 50px;
             margin-bottom: 1rem;
             stroke: var(--color-primary);
@@ -260,13 +426,44 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        /* Icono grande para split layout */
-        .visual-content .icon-svg {
-             width: 150px;
-             height: 150px;
-        }
         
-        /* --- Navegación --- */
+        .highlight-number {
+            font-size: 3.5rem; 
+            font-weight: 800;
+            color: var(--color-primary); 
+            display: block; 
+            margin-top: 1rem;
+            line-height: 1;
+        }
+        .highlight-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-text);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-tags-container {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: center;
+            gap: 0.8rem; 
+            margin-top: 1rem; 
+            margin-bottom: 1.5rem; 
+            width: 100%; 
+        }
+
+        .title-tag {
+            background-color: var(--color-ui-bg); 
+            color: var(--color-text-secondary); 
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            white-space: nowrap; 
+        }
+
         .nav-controls {
             position: fixed;
             bottom: 2rem;
@@ -297,7 +494,6 @@
             border-color: var(--color-primary);
         }
 
-        /* --- Barra de Progreso --- */
         #progress-bar {
             position: fixed;
             top: 0;
@@ -309,21 +505,17 @@
             transition: width 0.3s ease;
         }
         
-        /* --- BARRA DE AGENDA --- */
         #agenda-tracker {
             position: fixed;
             top: 6px; 
             left: 0;
             width: 100%;
             height: 40px;
-            
             background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: saturate(180%) blur(5px);
-            
             border-bottom: 1px solid #e0e0e0;
             display: flex;
             z-index: 1001;
-            
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -334,7 +526,7 @@
             text-align: center;
             font-size: 0.9rem;
             font-weight: 600; 
-            color: var(--color-muted);
+            color: #adb5bd; 
             line-height: 40px;
             padding: 0 10px;
             overflow: hidden;
@@ -349,12 +541,11 @@
             font-weight: 700; 
         }
 
-        /* --- REDISEÑO PARA SLIDE "Lecciones Clave del Piloto" --- */
         .slide.lessons-slide {
             justify-content: flex-start; 
             align-items: flex-start; 
             text-align: left;
-            padding: 2rem 5rem 3rem 5rem; 
+            padding: 6rem 5rem 3rem 5rem; 
             overflow-y: auto;
         }
         
@@ -394,7 +585,6 @@
             font-size: 2.8rem; 
         }
         
-        /* Párrafo INTRODUCTORIO (derecha del título) */
         .title-intro-split > p { 
             flex: 0 1 50%; 
             margin-bottom: 0;
@@ -432,7 +622,7 @@
         
         .right-side-card {
             flex: 0 0 400px; 
-            background-color: var(--color-muted);
+            background-color: #dbe4ed; 
             border-radius: 8px;
             padding: 2rem;
             display: flex;
@@ -455,12 +645,625 @@
             max-width: 90%;
             margin-bottom: 0;
         }
-
-        /* Ajuste para el color del icono de advertencia en el contexto */
-        .slide.warning-icon .icon-svg {
-            stroke: var(--color-text-secondary); 
+        
+        .bottom-charts-layout {
+            display: flex;
+            justify-content: center; 
+            align-items: flex-start; 
+            gap: 2rem; 
+            width: 100%;
+            max-width: 1400px; 
+            margin: 3rem auto 3rem auto; 
         }
 
+        .bubble-chart-wrapper {
+             flex: 2; 
+             position: relative; 
+             height: 450px; 
+             padding: 2.5rem; 
+             border: 1px solid var(--color-muted);
+             background-color: #fcfcfc;
+             border-radius: 8px;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        #bubble-chart-area {
+            position: absolute;
+            top: 2.5rem; 
+            left: 2.5rem;
+            right: 2.5rem;
+            bottom: 2.5rem;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 5px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default; 
+            transform: translate(-50%, -50%); 
+        }
+        .bubble:hover {
+            transform: translate(-50%, -50%) scale(1.05); 
+            z-index: 10;
+        }
+
+        .bubble-chart-text-card {
+            flex: 1; 
+            background-color: var(--color-ui-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            border-left: 6px solid var(--color-text-secondary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            height: 450px; 
+        }
+
+        .bubble-chart-text-card h4 {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .bubble-chart-text-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .bubble-chart-text-card ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+        .bubble-chart-text-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        .stats-highlights-container {
+            display: flex;
+            justify-content: space-around; 
+            align-items: stretch; 
+            gap: 1.5rem; 
+            width: 100%;
+            margin-top: 2.5rem; 
+            padding: 0 1rem; 
+        }
+
+        .stat-highlight-box {
+            flex: 1; 
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px; 
+        }
+
+        .stat-highlight-box .stat-label {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .stat-highlight-box .stat-number {
+            font-weight: 800;
+            font-size: 2.5rem; 
+            line-height: 1.1;
+        }
+        
+        .stat-equipo { background-color: var(--color-primary); }
+        .stat-solvers { background-color: var(--color-muted); color: var(--color-text); } 
+        .stat-participacion { background-color: var(--color-text); }
+        .stat-memoristas { background-color: var(--color-text); }
+        
+        .stat-participacion .stat-number {
+             font-size: 1.8rem; 
+             font-weight: 700;
+        }
+         .stat-participacion .stat-label {
+            text-decoration: underline; 
+            margin-bottom: 0.2rem;
+         }
+
+         .capex-metrics-layout {
+            display: flex;
+            align-items: center; 
+            gap: 3.5rem; 
+            width: 100%;
+         }
+
+        .capex-chart-container {
+            flex: 1.8; 
+            width: auto; 
+            max-width: none; 
+            margin: 0; 
+            font-family: var(--font-main);
+        }
+        .capex-chart-title {
+            font-size: 1.8rem; 
+            margin-bottom: 2rem;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem; 
+        }
+        .bar-label-year {
+            flex-basis: 50px; 
+            text-align: right;
+            padding-right: 1rem;
+            font-weight: 600;
+            color: #555;
+        }
+        .bar-wrapper {
+            flex-grow: 1; 
+            display: flex;
+            height: 40px; 
+            background-color: #f0f0f0; 
+            border-radius: 4px;
+            overflow: hidden; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; 
+            padding: 0 10px; 
+            color: white;
+            font-size: 0.85rem; 
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+            line-height: 40px; 
+        }
+        .bar-segment.escalamiento { background-color: var(--color-bar-escalamiento); color: var(--color-text); }
+        .bar-segment.pilotos { background-color: var(--color-bar-pilotos); }
+        
+        .xaxis-labels {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 60px; 
+            font-size: 0.8rem; 
+            color: #777;
+            margin-top: -0.2rem; 
+             margin-bottom: 1.5rem;
+             border-top: 1px solid #ddd;
+             padding-top: 0.5rem;
+        }
+        .xaxis-labels span {
+            flex: 1;
+            text-align: center;
+            position: relative; 
+        }
+         .xaxis-labels span::before { 
+            content: '';
+            position: absolute;
+            top: -8px; 
+            left: 50%;
+            transform: translateX(-50%); 
+            width: 1px;
+            height: 5px;
+            background-color: #ccc;
+         }
+         .xaxis-labels span:first-child::before { display: none; } 
+         .xaxis-labels span:first-child { text-align: left; }
+         .xaxis-labels span:last-child { text-align: right;}
+
+        .capex-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.85rem; 
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem; 
+        }
+        .legend-color-box {
+            width: 10px; 
+            height: 10px;
+            border-radius: 50%; 
+        }
+
+        .financial-metrics {
+            flex: 1.2; 
+            width: auto; 
+            max-width: 450px; 
+            margin: 0; 
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem; 
+        }
+        .metric-box {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 1rem 1.5rem; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+            background-color: white; 
+            border-left: 5px solid; 
+        }
+        .metric-label {
+            font-size: 1.1rem;
+            font-weight: 600; 
+            color: var(--color-text); 
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem; 
+            border-radius: 5px;
+            text-align: right; 
+        }
+
+        .metric-box.van { border-left-color: var(--color-text); }
+        .metric-box.van .metric-value { background-color: var(--color-text); color: white; }
+
+        .metric-box.valor, .metric-box.costo { border-left-color: var(--color-muted); }
+        .metric-box.valor .metric-value, .metric-box.costo .metric-value { background-color: var(--color-muted); color: var(--color-text); }
+
+         .value-capture-layout {
+             display: flex;
+             align-items: center; 
+             gap: 3.5rem; 
+             width: 100%;
+         }
+
+         .value-chart-container {
+             flex: 1.8; 
+             display: flex;
+             flex-direction: column;
+             align-items: center; 
+         }
+         .value-capture-svg {
+             width: 100%;
+             max-width: 100%; 
+             height: 400px; 
+             border: 1px solid #eee;
+             box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+             margin-bottom: 1rem;
+             background-color: white; 
+         }
+         .value-capture-svg .axis {
+             stroke: #ccc; 
+             stroke-width: 1;
+         }
+         .value-capture-svg .grid-line {
+             stroke: #eee; 
+             stroke-width: 1;
+             stroke-dasharray: 2,2; 
+         }
+          .value-capture-svg .axis-label {
+             font-size: 11px; 
+             fill: #666; 
+             text-anchor: middle;
+         }
+         .value-capture-svg .y-axis-label {
+              text-anchor: end; 
+              font-size: 10px; 
+         }
+          .value-capture-svg .area {
+              stroke-width: 0; 
+              opacity: 0.85; 
+          }
+
+
+        .value-chart-legend {
+             display: flex;
+             flex-wrap: wrap; 
+             justify-content: center;
+             gap: 0.7rem 1.2rem; 
+             font-size: 0.8rem; 
+             margin-top: 1rem; 
+             max-width: 90%; 
+        }
+         .value-legend-item {
+             display: flex;
+             align-items: center;
+             gap: 0.4rem;
+         }
+        .value-legend-color-box {
+            width: 10px; 
+            height: 10px;
+            border-radius: 50%; 
+        }
+
+         .value-text-content {
+             flex: 1.2; 
+             text-align: left;
+             font-size: 1rem; 
+             line-height: 1.8; 
+             color: #495057; 
+             padding-top: 0.5rem; 
+             align-self: center; 
+         }
+         .value-text-content p {
+            margin-bottom: 1.5rem; 
+         }
+         .value-text-content strong {
+            color: var(--color-primary); 
+            font-weight: 700;
+         }
+
+        /* ===== Rediseño rotundo de la slide de Agenda ===== */
+        .slide.agenda-revamp {
+            background: var(--color-primary);
+            color: #fff;
+            align-items: stretch;
+        }
+        .slide.agenda-revamp h2 {
+            color: #fff;
+            margin-bottom: 2rem;
+            width: 100%;
+            text-align: left;
+            max-width: 1400px;
+        }
+        .agenda-grid {
+            list-style: decimal-leading-zero;
+            counter-reset: agenda-counter;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+        .agenda-grid li {
+            counter-increment: agenda-counter;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .agenda-grid li:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        }
+        .agenda-card {
+            position: relative;
+            height: 260px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: stretch;
+            text-align: left;
+        }
+        .agenda-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(105%) contrast(105%);
+            transition: transform .25s ease;
+        }
+        .agenda-grid li:hover .agenda-card img {
+            transform: scale(1.03);
+        }
+        .agenda-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%);
+        }
+        .agenda-caption {
+            position: relative;
+            z-index: 1;
+            padding: 1rem 1rem 1.2rem 1rem;
+            width: 100%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+        .agenda-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            font-weight: 800;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        .agenda-title {
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+        }
+        @media (max-width: 1400px) {
+            .agenda-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .agenda-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .agenda-grid { grid-template-columns: 1fr; }
+        }
+        /* ===== Fin rediseño Agenda ===== */
+
+        /* ===== Botón desplegable en "Captura de valor estimada por Proceso" ===== */
+        .value-extra-menu {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 50;
+            text-align: right;
+        }
+        .value-extra-button {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 0.6rem 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(79,31,255,0.25);
+        }
+        .value-extra-button:focus {
+            outline: 3px solid rgba(79,31,255,0.35);
+            outline-offset: 2px;
+        }
+        .value-extra-panel {
+            position: absolute;
+            right: 0;
+            bottom: 48px; 
+            width: 360px;
+            max-width: 85vw;
+            background: #fff;
+            color: var(--color-text);
+            border: 1px solid #e6e6e6;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            padding: 0.75rem 1rem;
+            display: none;
+        }
+        .value-extra-panel.open { display: block; }
+        .value-extra-panel ul {
+            margin: 0;
+            padding-left: 1rem;
+            text-align: left;
+        }
+        .value-extra-panel li {
+            margin: 0.35rem 0;
+            font-size: 0.95rem;
+        }
+        /* ===== Fin botón desplegable ===== */
+
+        /* ===== Roadmap / Línea de tiempo (Nov 2025 – Feb 2026) ===== */
+        .roadmap-wrapper{
+            width: 100%;
+            max-width: 1400px;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            padding: 1.5rem 2rem;
+            text-align: left;
+            margin: 1rem 0 2rem 0;
+        }
+        .roadmap-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .roadmap-title{
+            font-weight: 800;
+            color: var(--color-text);
+        }
+        .roadmap-legend{
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: .9rem;
+        }
+        .legend-pill{
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .25rem .6rem;
+            border-radius: 999px;
+            border: 1px solid #e6e6e6;
+            background: #fafafa;
+            font-weight: 600;
+        }
+        .legend-dot{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .timeline-months{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: .5rem;
+            margin-bottom: .5rem;
+            font-size: .9rem;
+            color: #6c757d;
+        }
+        .timeline-months div{
+            text-align: center;
+            font-weight: 700;
+        }
+        .timeline-grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 52px;
+            gap: .5rem;
+            position: relative;
+        }
+        .timeline-grid::before{
+            content:"";
+            position:absolute;
+            left:0;right:0;top:0;bottom:0;
+            background:
+              linear-gradient(to right, #eee 1px, transparent 1px) 0 0/ calc(25%) 100%;
+            pointer-events:none;
+            opacity:.6;
+        }
+        .timeline-item{
+            border-radius: 10px;
+            padding: .5rem .75rem;
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+            gap:.75rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,.06);
+            font-weight: 700;
+            overflow: hidden;
+            position: relative;
+        }
+        .ti-title{ font-size: .95rem; }
+        .ti-badge{
+            font-size:.75rem;
+            padding:.2rem .5rem;
+            border-radius: 999px;
+            font-weight: 800;
+            letter-spacing:.3px;
+            white-space: nowrap;
+        }
+        /* Categorías */
+        .cat-estrategico{ background: var(--color-primary); color:#fff; }
+        .cat-estrategico .ti-badge{ background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); color:#fff; }
+
+        .cat-operativo{ background: #e9ecef; color: var(--color-text); border: 1px solid #cfd4da; }
+        .cat-operativo .ti-badge{ background:#fff; border:1px solid #cfd4da; color: var(--color-text); }
+
+        .cat-personas{ background: var(--color-text); color:#fff; }
+        .cat-personas .ti-badge{ background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); color:#fff; }
+
+        .cat-procesos{ background: var(--color-text-secondary); color:#fff; }
+        .cat-procesos .ti-badge{ background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); color:#fff; }
+        /* ===== Fin Roadmap ===== */
     </style>
 </head>
 <body>
@@ -468,239 +1271,349 @@
     <div id="progress-bar"></div>
 
     <div id="agenda-tracker">
-        <div class="agenda-item" id="agenda-item-1">1. Contexto</div>
-        <div class="agenda-item" id="agenda-item-2">2. Estado Actual</div>
-        <div class="agenda-item" id="agenda-item-3">3. Análisis y Sinergias</div>
-        <div class="agenda-item" id="agenda-item-4">4. Aprendizajes</div>
+        <div class="agenda-item" id="agenda-item-1">1. Introducción y Contexto</div>
+        <div class="agenda-item" id="agenda-item-2">2. Estado Actual del Programa</div>
+        <div class="agenda-item" id="agenda-item-3">3. Análisis Conjunto y Sinergias Dx y Tx​</div>
+        <div class="agenda-item" id="agenda-item-4">4. Mejores Prácticas y Aprendizajes ​</div>
         <div class="agenda-item" id="agenda-item-5">5. Próximos Pasos</div>
     </div>
 
     <div class="presentation-container">
 
         <section class="slide title-slide active" data-agenda-item="0">
-            <div class="kicker">Confidencial // Comité Ejecutivo</div>
-            <h1>Proyecto Centauri: Redefiniendo la Eficiencia Operativa</h1>
-            <p class="subtitle">Una nueva era de optimización impulsada por IA y Data.</p>
-            <p style="margin-top: 2rem; color: #6c757d;">Octubre 2025</p>
+            <img src="figs/logo.png" alt="Logo Corporativo" id="logo-corporativo">
+            <div class="kicker">Confidencial // Comité Innovación</div>
+            <h1>Proyecto X: Descripción</h1>
+            <p class="subtitle">Bajada de título.</p>
+            <p style="margin-top: 2rem; color: #6c757d;">Noviembre 2025</p>
         </section>
 
-        <section class="slide" data-agenda-item="0">
-            <div class="kicker">Nuestra Hoja de Ruta</div>
-            <h2>Agenda de la Reunión</h2>
-            
-            <ol class="agenda-list">
-                <li>Introducción y contexto</li>
-                <li>Estado actual del programa</li>
-                <li>Análisis Conjunto y Sinergias Dx y Tx</li>
-                <li>Mejores Prácticas y Aprendizajes</li>
-                <li>Próximos pasos</li>
+        <section class="slide agenda-revamp" data-agenda-item="0">
+            <div class="kicker"></div>
+            <h2>Agenda</h2>
+            <ol class="agenda-grid">
+                <li>
+                    <figure class="agenda-card">
+                        <img src="https://via.placeholder.com/1200x800/6b50ff/ffffff?text=Introducci%C3%B3n+y+Contexto" alt="Introducción y Contexto">
+                        <figcaption class="agenda-caption">
+                            <span class="agenda-badge">01</span>
+                            <span class="agenda-title">Introducción y contexto</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="agenda-card">
+                        <img src="https://via.placeholder.com/1200x800/5337ff/ffffff?text=Estado+actual+del+programa" alt="Estado actual del programa">
+                        <figcaption class="agenda-caption">
+                            <span class="agenda-badge">02</span>
+                            <span class="agenda-title">Estado actual del programa</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="agenda-card">
+                        <img src="https://via.placeholder.com/1200x800/4f1fff/ffffff?text=An%C3%A1lisis+Dx+y+Tx" alt="Análisis Conjunto y Sinergias Dx y Tx">
+                        <figcaption class="agenda-caption">
+                            <span class="agenda-badge">03</span>
+                            <span class="agenda-title">Análisis Conjunto y Sinergias Dx y Tx</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="agenda-card">
+                        <img src="https://via.placeholder.com/1200x800/3e2ad9/ffffff?text=Mejores+Pr%C3%A1cticas+y+Aprendizajes" alt="Mejores Prácticas y Aprendizajes">
+                        <figcaption class="agenda-caption">
+                            <span class="agenda-badge">04</span>
+                            <span class="agenda-title">Mejores Prácticas y Aprendizajes</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="agenda-card">
+                        <img src="https://via.placeholder.com/1200x800/2c16b5/ffffff?text=Pr%C3%B3ximos+Pasos" alt="Próximos pasos">
+                        <figcaption class="agenda-caption">
+                            <span class="agenda-badge">05</span>
+                            <span class="agenda-title">Próximos pasos</span>
+                        </figcaption>
+                    </figure>
+                </li>
             </ol>
         </section>
         
-        <section class="slide warning-icon" data-agenda-item="1">
-            <div class="slide-content-split">
-                <div class="text-content">
-                    <div class="kicker">1. Contexto: El Desafío</div>
-                    <h2>La Fricción Oculta que Cuesta Millones</h2>
-                    <p>Nuestros procesos manuales de logística y asignación de recursos generan un <strong>15% de ineficiencia</strong> medible.</p>
-                    <p>Esto se traduce en retrasos, aumento de costos operativos y una capacidad de respuesta lenta ante la demanda del mercado.</p>
-                </div>
-                <div class="visual-content">
-                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                </div>
-            </div>
+        <section class="slide chart-slide scrollable" data-agenda-item="1">
+             <div class="kicker">Kicker</div><h2>Visión general de programa innovación​</h2><div class="chart-split-layout"><div class="chart-container-innovation"><svg viewBox="0 0 900 550" preserveAspectRatio="xMidYMid meet"><line class="chart-line" x1="80" y1="450" x2="840" y2="450" /><text class="axis-label-innovation" x="860" y="455">MESES</text><line class="chart-line" x1="80" y1="100" x2="80" y2="450" /><text class="axis-label-innovation" x="40" y="275" transform="rotate(-90 40 275)">Madurez del programa</text><g class="month-labels"><line class="chart-tick" x1="130" y1="450" x2="130" y2="455" /> <text class="month-label-innovation" x="130" y="470">1</text><line class="chart-tick" x1="190" y1="450" x2="190" y2="455" /> <text class="month-label-innovation" x="190" y="470">2</text><line class="chart-tick" x1="250" y1="450" x2="250" y2="455" /> <text class="month-label-innovation" x="250" y="470">3</text><line class="chart-tick" x1="310" y1="450" x2="310" y2="455" /> <text class="month-label-innovation" x="310" y="470">4</text><line class="chart-tick" x1="370" y1="450" x2="370" y2="455" /> <text class="month-label-innovation" x="370" y="470">5</text><line class="chart-tick" x1="430" y1="450" x2="430" y2="455" /> <text class="month-label-innovation" x="430" y="470">6</text><line class="chart-tick" x1="490" y1="450" x2="490" y2="455" /> <text class="month-label-innovation" x="490" y="470">7</text><line class="chart-tick" x1="550" y1="450" x2="550" y2="455" /> <text class="month-label-innovation" x="550" y="470">8</text><line class="chart-tick" x1="610" y1="450" x2="610" y2="455" /> <text class="month-label-innovation" x="610" y="470">9</text><line class="chart-tick" x1="670" y1="450" x2="670" y2="455" /> <text class="month-label-innovation" x="670" y="470">10</text><line class="chart-tick" x1="730" y1="450" x2="730" y2="455" /> <text class="month-label-innovation" x="730" y="470">11</text><line class="chart-tick" x1="790" y1="450" x2="790" y2="455" /> <text class="month-label-innovation" x="790" y="470">12</text></g><rect class="madurez-shaded-area" x="700" y="100" width="140" height="350" /><path id="maturityPath" class="maturity-curve" d="M 80,430 C 150,435 200,420 250,380 C 350,280 450,180 600,120 C 680,105 760,100 840,100" /><g class="stage-content-text"><text x="90" y="170" class="stage-content-innovation"><tspan x="90" dy="0em">• Diagnóstico</tspan><tspan x="90" dy="1.2em">• Entrevistas Gerenciales</tspan><tspan x="90" dy="1.2em">• Alineamiento Estratégico</tspan><tspan x="90" dy="1.2em">• Focos y Desafíos</tspan><tspan x="90" dy="1.2em">• Gobernanza</tspan><tspan x="90" dy="1.2em">• Métricas</tspan><tspan x="90" dy="1.2em">• Proceso</tspan><tspan x="90" dy="1.2em">• Gestión de Recursos</tspan><tspan x="90" dy="1.2em">• Relación con el Ecosistema</tspan></text><text x="320" y="270" class="stage-content-innovation"><tspan x="320" dy="0em">• Generación primer portafolio</tspan><tspan x="320" dy="1.2em">• Comunicación a la organización</tspan><tspan x="320" dy="1.2em">• Capacitaciones</tspan><tspan x="320" dy="1.2em">• Embajadores</tspan><tspan x="320" dy="1.2em">• Validación de procesos establecidos</tspan></text><text x="500" y="200" class="stage-content-innovation"><tspan x="500" dy="0em">• Suma de nuevos ciclos de innovación</tspan><tspan x="500" dy="1.2em">• Ampliación del portafolio</tspan><tspan x="500" dy="1.2em">• Establecimiento de procesos</tspan><tspan x="500" dy="1.2em">• Medición de primeros resultados</tspan><tspan x="500" dy="1.2em">• Comunicación de resultados iniciales</tspan></text><text x="710" y="150" class="stage-content-innovation"><tspan x="710" dy="0em">• Inicio de un nuevo ciclo</tspan><tspan x="710" dy="1.2em">• Segunda versión del diagnóstico</tspan><tspan x="710" dy="1.2em">• Revisión de alineamiento</tspan><tspan x="710" dy="1.2em">  estratégico, métricas, procesos,</tspan><tspan x="710" dy="1.2em">  recursos y relación con el</tspan><tspan x="710" dy="1.2em">  ecosistema</tspan></text></g><g class="stage-labels-strip"><rect x="80" y="485" width="760" height="40" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="1"/><rect x="80" y="485" width="170" height="40" class="stage-label-box" /><text x="165" y="510" class="stage-label-text">SETUP</text><rect x="250" y="485" width="180" height="40" class="stage-label-box" /><text x="340" y="510" class="stage-label-text">TRACCIÓN</text><rect x="430" y="485" width="270" height="40" class="stage-label-box" /><text x="565" y="510" class="stage-label-text">ACELERACIÓN</text><rect x="700" y="485" width="140" height="40" class="stage-label-box" /><text x="770" y="510" class="stage-label-text">MADUREZ</text></g></svg></div><div class="stats-stack"><div class="stat-card"><h4>Iniciativas</h4><div class="stat-value">55</div></div><div class="stat-card"><h4>Idea/Problematización</h4><div class="stat-value">9</div></div><div class="stat-card"><h4>Diseño de solución</h4><div class="stat-value">6</div></div><div class="stat-card"><h4>MVP/Piloto</h4><div class="stat-value">21</div></div><div class="stat-card"><h4>Escalamiento</h4><div class="stat-value">12</div></div></div></div><div class="content-card" style="margin-top: 3rem; max-width: 1400px; width: 100%;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; text-align: center; width: 100%;">Distribución y Equipo del Portafolio</h3>
+                <div class="visual-content" style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; gap: 3rem; width: 100%;">
+                    <svg viewBox="0 0 100 100" width="300" height="300" style="transform: rotate(-90deg); border-radius: 50%;">
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="var(--color-primary)" stroke-width="50" stroke-dasharray="62.8 157" stroke-dashoffset="-94.2"></circle>
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="var(--color-text-secondary)" stroke-width="50" stroke-dasharray="47.1 157" stroke-dashoffset="-47.1"></circle>
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="var(--color-ui-bg)" stroke-width="50" stroke-dasharray="31.4 157" stroke-dashoffset="-15.7"></circle>
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="var(--color-muted)" stroke-width="50" stroke-dasharray="15.7 157" stroke-dashoffset="0"></circle>
+                    </svg><div class="pie-legend" style="text-align: left; font-size: 1.1rem; color: var(--color-text);"><div style="display: flex; align-items: center; margin-bottom: 1rem;"><span style="width: 25px; height: 25px; background-color: var(--color-primary); margin-right: 12px; border-radius: 4px;"></span><div style="line-height: 1.2;"><span style="font-weight: 700; font-size: 1.5rem;">40%</span><br>Exploración</div></div><div style="display: flex; align-items: center; margin-bottom: 1rem;"><span style="width: 25px; height: 25px; background-color: var(--color-text-secondary); margin-right: 12px; border-radius: 4px;"></span><div style="line-height: 1.2;"><span style="font-weight: 700; font-size: 1.5rem;">30%</span><br>Pilotos Activos</div></div><div style="display: flex; align-items: center; margin-bottom: 1rem;"><span style="width: 25px; height: 25px; background-color: var(--color-ui-bg); margin-right: 12px; border-radius: 4px; border: 1px solid #aaa;"></span><div style="line-height: 1.2;"><span style="font-weight: 700; font-size: 1.5rem;">20%</span><br>Escalamiento</div></div><div style="display: flex; align-items: center;"><span style="width: 25px; height: 25px; background-color: var(--color-muted); margin-right: 12px; border-radius: 4px;"></span><div style="line-height: 1.2;"><span style="font-weight: 700; font-size: 1.5rem;">10%</span><br>Completados</div></div></div></div><div class="stats-highlights-container"><div class="stat-highlight-box stat-equipo"><span class="stat-label">Equipo</span><span class="stat-number">3</span></div><div class="stat-highlight-box stat-solvers"><span class="stat-label">Solvers</span><span class="stat-number">13</span></div><div class="stat-highlight-box stat-participacion"><span class="stat-label">Participación iniciativas:</span><span class="stat-number">240/871 = 28%</span></div><div class="stat-highlight-box stat-memoristas"><span class="stat-label">Memoristas</span><span class="stat-number">3</span></div></div></div><div class="bottom-charts-layout"><div class="bubble-chart-wrapper"><span style="position: absolute; left: 10px; top: 50%; font-weight: 600; color: var(--color-text-secondary); writing-mode: vertical-rl; transform: rotate(180deg) translateX(50%);">Impacto</span><span style="position: absolute; bottom: 10px; left: 50%; font-weight: 600; color: var(--color-text-secondary); transform: translateX(-50%);">Esfuerzo</span><div style="position: absolute; left: 50%; top: 20px; bottom: 20px; width: 1px; background-color: var(--color-muted); opacity: 0.7; transform: translateX(-50%);"></div><div style="position: absolute; top: 50%; left: 20px; right: 20px; height: 1px; background-color: var(--color-muted); opacity: 0.7; transform: translateY(-50%);"></div><span style="position: absolute; top: 5%; left: 5%; color: var(--color-primary); font-weight: 700; font-size: 0.9rem;">Hacer Ahora</span><span style="position: absolute; top: 5%; right: 5%; color: var(--color-text-secondary); font-weight: 700; font-size: 0.9rem;">Proyectos Estratégicos</span><span style="position: absolute; bottom: 5%; left: 5%; color: #888; font-weight: 600; font-size: 0.9rem;">Baja Prioridad</span><span style="position: absolute; bottom: 5%; right: 5%; color: #888; font-weight: 600; font-size: 0.9rem;">Descartar / Reevaluar</span><div id="bubble-chart-area"></div></div><div class="bubble-chart-text-card">
+                        <h4>Resumen</h4><p>Se tienen segmentado el portafolio por nivel de impacto y de madurez. Un 36% se encuentra en el sector de alto impacto. ​</p>
+                        <p>Se han realizado:</p><ul><li><strong>20</strong> Talleres y charlas</li><li><strong>2</strong> Hackathones</li><li><strong>1</strong> Desafío Dx</li></ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Han participado 560 personas, con una dedicación total de 4557 horas hombre.</p></div></div>
         </section>
 
-        <section class="slide" data-agenda-item="1">
-            <h2>Convertir Datos en Decisiones</h2>
-            <p>Tenemos la oportunidad de ser pioneros en nuestro sector adoptando un enfoque proactivo.</p>
-            
-            <div class="columns">
-                <div class="column">
-                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                    <h3>Optimizar</h3>
-                    <p>Reducir costos operativos en un 12% estimado en los primeros 18 meses.</p>
+        <section class="slide scrollable" data-agenda-item="2"> 
+             <div class="section-card"> 
+                <h3 class="section-title capex-chart-title">Iniciativas clave con mayor aporte de valor y su estado ​</h3>
+                <div class="capex-metrics-layout"> 
+                    <div class="capex-chart-container">
+                        
+                        <div class="bar-row">
+                            <span class="bar-label-year">2025</span>
+                            <div class="bar-wrapper">
+                                <div class="bar-segment escalamiento" style="width: 87.9%;" title="Capex Escalamiento: $830,392,158">$830,392,158</div>
+                                <div class="bar-segment pilotos" style="width: 12.1%;" title="Capex Pilotos: $114,473,200">$114,473,200</div>
+                            </div>
+                        </div>
+                         <div class="bar-row">
+                            <span class="bar-label-year">2024</span>
+                            <div class="bar-wrapper">
+                                <div class="bar-segment escalamiento" style="width: 86.0%;" title="Capex Escalamiento: $762,200,000">$762,200,000</div>
+                                <div class="bar-segment pilotos" style="width: 14.0%;" title="Capex Pilotos: $124,042,066">$124,042,066</div>
+                            </div>
+                        </div>
+                         <div class="xaxis-labels">
+                            <span>$-</span>
+                            <span>$200M</span> 
+                            <span>$400M</span>
+                            <span>$600M</span>
+                            <span>$800M</span>
+                            <span>$1.000M</span> 
+                        </div>
+                        <div class="capex-legend">
+                            <div class="legend-item"><span class="legend-color-box" style="background-color: var(--color-bar-escalamiento);"></span>Capex Escalamiento</div>
+                            <div class="legend-item"><span class="legend-color-box" style="background-color: var(--color-bar-pilotos);"></span>Capex Pilotos</div>
+                        </div>
+                    </div>
+
+                    <div class="financial-metrics">
+                        <div class="metric-box van">
+                            <span class="metric-label">VAN a 5 años</span>
+                            <span class="metric-value">MM$10.160</span>
+                        </div>
+                         <div class="metric-box valor">
+                            <span class="metric-label">Valor a 5 años</span>
+                            <span class="metric-value">MM$ 14.560</span>
+                        </div>
+                         <div class="metric-box costo">
+                            <span class="metric-label">Costo a 5 años</span>
+                            <span class="metric-value">MM$ 2.400</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
-                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    <h3>Acelerar</h3>
-                    <p>Mejorar el tiempo de respuesta al cliente en un 25%, aumentando la satisfacción.</p>
+             </div> 
+
+             <div class="section-card" style="position: relative;"> 
+                <h3 class="section-title value-capture-title">Captura de valor estimada por Proceso</h3>
+                <div class="value-capture-layout">
+                    <div class="value-chart-container">
+                       <svg class="value-capture-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+                            <line class="axis" x1="50" y1="450" x2="750" y2="450" /> 
+                            <line class="axis" x1="50" y1="50" x2="50" y2="450" /> 
+                            
+                            <line class="grid-line" x1="50" y1="375" x2="750" y2="375" />
+                            <line class="grid-line" x1="50" y1="295" x2="750" y2="295" />
+                            <line class="grid-line" x1="50" y1="215" x2="750" y2="215" />
+                            <line class="grid-line" x1="50" y1="135" x2="750" y2="135" />
+
+
+                            <text class="axis-label y-axis-label" x="40" y="455">0</text>
+                            <text class="axis-label y-axis-label" x="40" y="375">1,000</text>
+                            <text class="axis-label y-axis-label" x="40" y="295">2,000</text>
+                            <text class="axis-label y-axis-label" x="40" y="215">3,000</text>
+                            <text class="axis-label y-axis-label" x="40" y="135">4,000</text>
+                            <text class="axis-label" x="15" y="45" transform="rotate(-90 15 45)">Millions</text>
+
+                            <text class="axis-label" x="150" y="475">2024</text>
+                            <text class="axis-label" x="350" y="475">2025</text>
+                            <text class="axis-label" x="550" y="475">2026</text>
+                            <text class="axis-label" x="750" y="475">2027</text>
+                             
+                             <polygon class="area" fill="var(--color-chart-operacionesdx)" points="50,450 150,340 350,290 550,240 750,200 750,450 50,450" />
+                             <polygon class="area" fill="var(--color-chart-proyectosdx)" points="50,450 150,340 350,290 550,240 750,200 750,180 550,210 350,250 150,300 50,450" />
+                             <polygon class="area" fill="var(--color-chart-planificacion)" points="50,450 150,300 350,250 550,210 750,180 750,170 550,195 350,230 150,270 50,450" />
+                             <polygon class="area" fill="var(--color-chart-control)" points="50,450 150,270 350,230 550,195 750,170 750,160 550,180 350,210 150,250 50,450" />
+                             <polygon class="area" fill="var(--color-chart-desarrollo)" points="50,450 150,250 350,210 550,180 750,160 750,130 550,150 350,180 150,220 50,450" />
+                             <polygon class="area" fill="var(--color-chart-clientes)" points="50,450 150,220 350,180 550,150 750,130 750,120 550,140 350,170 150,210 50,450" />
+
+                       </svg>
+                       
+                        <div class="value-chart-legend">
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-clientes);"></span> Clientes </div>
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-desarrollo);"></span> Desarrollo Operacional </div>
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-control);"></span> Control de energía </div>
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-planificacion);"></span> Planificación y Control </div>
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-proyectosdx);"></span> Proyectos Dx </div>
+                            <div class="value-legend-item"> <span class="value-legend-color-box" style="background-color: var(--color-chart-operacionesdx);"></span> Operaciones Dx </div>
+                        </div>
+                    </div>
+                    <div class="value-text-content">
+                        <p>En iniciativas en escalamiento y escalados se tiene un VAN a 5 años estimado de <strong>MM$ 10.160</strong>.</p>
+                        <p>En iniciativas en etapas temprano de madurez, se tienen <strong>8 iniciativas</strong> con un nivel de impacto <strong>Alto</strong> (&gt;MM$500 a 5 años).</p>
+                        <p><strong>16 iniciativas (29%)</strong> tienen foco clientes o clientes y eficiencia, <strong>7% en riesgo</strong>, el resto foco eficiencia pura.</p>
+                        <p>Adicionalmente se trabaja en dos programas que buscan problemáticas de valor: <strong>Solvers</strong> (Octubre) y <strong>Memoristas</strong> (Diciembre).</p>
+                    </div>
                 </div>
-                <div class="column">
-                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 13a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5m.5 2.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5M14 6a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m-1.5.5A.5.5 0 0 1 12 6h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5M14 8a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m-1.5.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0 2a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5M14 10a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m0 2a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m0 2a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m0 2a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1m0 2a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5m-2 2A.5.5 0 0 1 2 1.5V.5a.5.5 0 0 1 1 0V1.5a.5.5 0 0 1-1 0m2 0a.5.5 0 0 1 .5.5V3a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5m-2 2A.5.5 0 0 1 2 3.5V2.5a.5.5 0 0 1 1 0V3.5a.5.5 0 0 1-1 0m2 0a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V4.5a.5.5 0 0 1 .5-.5m-2 2A.5.5 0 0 1 2 5.5V4.5a.5.5 0 0 1 1 0V5.5a.5.5 0 0 1-1 0m2 0a.5.5 0 0 1 .5.5V7a.5.5 0 0 1-1 0V6.5a.5.5 0 0 1 .5-.5m-2 2A.5.5 0 0 1 2 7.5V6.5a.5.5 0 0 1 1 0V7.5a.5.5 0 0 1-1 0m2 0a.5.5 0 0 1 .5.5V9a.5.5 0 0 1-1 0V8.5a.5.5 0 0 1 .5-.5m-2 2A.5.5 0 0 1 2 9.5V8.5a.5.5 0 0 1 1 0V9.5a.5.5 0 0 1-1 0m2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m-2 2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m-2 2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m-2 2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5"></path></svg>
-                    <h3>Innovar</h3>
-                    <p>Crear nuevos flujos de ingreso basados en análisis predictivo y eficiencia.</p>
+
+                <div class="value-extra-menu">
+                    <button id="value-extra-button" class="value-extra-button" aria-expanded="false" aria-controls="value-extra-panel">Iniciativas ▾</button>
+                    <div id="value-extra-panel" class="value-extra-panel" role="region" aria-label="Listado de iniciativas">
+                        <ul>
+                            <li>Software Diagnóstico de Puntos de Falla (post SCADA)​;</li>
+                            <li>Agente Virtual CCD - Anachronics​;</li>
+                            <li>Capacitación Integral ;</li>
+                            <li>Proyecto RES (Comunicación Autoridades)​;</li>
+                            <li>Coating Robot (Chilquinta)​;</li>
+                            <li>Proyectos y VNR​;</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="column">
-                     <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                    <h3>Predecir</h3>
-                    <p>Anticipar la demanda futura y posibles fallos operativos con un 90% de precisión.</p>
-                                                <ul>
-                                <li>Necesidad: Registrar entregas en zonas sin cobertura.</li>
-                                <li>Alta demanda justifica su priorización.</li>
-                                <li>Acción: Incluir en el próximo sprint de desarrollo.</li>
-                                                   <li>Necesidad: Registrar entregas en zonas sin cobertura.</li>
-                                <li>Alta demanda justifica su priorización.</li>
-                                <li>Acción: Incluir en el próximo sprint de desarrollo.</li>
-                             </ul>
-                </div>
-            </div>
+             </div> 
         </section>
 
-        <section class="slide" data-agenda-item="2">
-            <div class="slide-content-split">
-                <div class="text-content">
-                    <div class="kicker">2. Estado Actual: "Centauri"</div>
-                    <h2>Plataforma de Operaciones Inteligente</h2>
-                    <p>Un sistema centralizado que utiliza <strong>Machine Learning</strong> para predecir la demanda, optimizar rutas y automatizar la asignación de tareas.</p>
-                    <ul style="text-align: left; margin-left: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-                        <li><strong>Dashboard Predictivo:</strong> Visualización en tiempo real de KPIs.</li>
-                        <li><strong>Motor de Optimización:</strong> Algoritmos que aprenden y mejoran.</li>
-                        <li><strong>Integración Total:</strong> Conexión nativa con ERP y CRM.</li>
-                    </ul>
-                </div>
-                <div class="visual-content">
-                    <svg class="icon-svg" style="width: 180px; height: 180px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                        <path d="M8 11l3 3 5-5"></path>
-                    </svg>
-                </div>
-            </div>
-        </section>
+        <section class="slide scrollable" data-agenda-item="2">
+             <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> 
+                <div class="status-tag">Terminado</div> 
+                <div class="kicker">1. Contexto:</div> <h2>REGULADORES DE VOLTAJE BT​</h2> <div class="title-tags-container"> <div class="title-tag">Proyectos Dx</div> <div class="title-tag">Escalamiento</div> <div class="title-tag">Efic/clientes</div> <div class="title-tag">Alto</div> </div> 
+                <p>Problemática: 1.602 reclamos por voltaje; 42% amerita mejoras y, de ese grupo, el 30% (≈200 casos) requiere obras mayores de alto costo y plazos extensos.​</p> 
+                <p>Solución: Instalación de reguladores para estabilizar el voltaje en zonas rurales, mejorando la calidad del suministro eléctrico y reduciendo la necesidad de inversiones mayores en infraestructura.​</p> 
 
-        <section class="slide" data-agenda-item="2">
-            <div class="kicker">2. Estado Actual: Impacto del Piloto</div>
-            <h2>Reducción de Costos Proyectada (Y1)</h2>
-            <p>Simulación basada en el piloto del Q3.</p>
-            
-            <div class="chart-container">
-                <svg viewBox="0 0 500 300" preserveAspectRatio="xMidYMid meet" aria-labelledby="chart-title" role="img">
-                    <title id="chart-title">Gráfico de barras de reducción de costos</title>
-                    <g class="grid" stroke="#e0e0e0" stroke-width="1">
-                        <line x1="50" y1="250" x2="480" y2="250"></line>
-                        <line x1="50" y1="250" x2="50" y2="50"></line>
-                        <line x1="50" y1="50" x2="480" y2="50" stroke-dasharray="2,2"></line>
-                        <line x1="50" y1="150" x2="480" y2="150" stroke-dasharray="2,2"></line>
-                    </g>
-                    <g class="labels y-labels" fill="#6c757d" font-size="12" font-family="var(--font-main)" text-anchor="end">
-                        <text x="40" y="255">0%</text>
-                        <text x="40" y="155">5%</text>
-                        <text x="40" y="55">10%</text>
-                    </g>
-                    <g class="labels x-labels" fill="#6c757d" font-size="12" font-family="var(--font-main)" text-anchor="middle">
-                        <text x="105" y="270">Q1</text>
-                        <text x="205" y="270">Q2</text>
-                        <text x="305" y="270">Q3 (Piloto)</text>
-                        <text x="405" y="270">Q4 (Proy.)</text>
-                    </g>
-                    <g class="bars" transform="translate(0, 250) scale(1, -1)">
-                        <rect class="bar bar-1" x="80" y="0" width="50" height="60" fill="rgba(79, 31, 255, 0.4)"></rect> <rect class="bar bar-2" x="180" y="0" width="50" height="80" fill="rgba(79, 31, 255, 0.6)"></rect> <rect class="bar bar-3" x="280" y="0" width="50" height="140" fill="var(--color-text-secondary)"></rect> <rect class="bar bar-4" x="380" y="0" width="50" height="180" fill="var(--color-primary)"></rect> </g>
-                </svg>
-            </div>
-        </section>
-
-        <section class="slide" data-agenda-item="3">
-            <div class="kicker">3. Análisis Conjunto y Sinergias Dx y Tx</div>
-            <h2>Identificando Oportunidades Cruzadas</h2>
-            <p>[Contenido de ejemplo] Nuestro análisis de la plataforma "Centauri" (Dx) revela sinergias directas con las operaciones de tratamiento (Tx).</p>
-            <ul style="text-align: left; margin-top: 2rem; max-width: 700px; font-size: 1.1rem; line-height: 1.8;">
-                <li>Sinergia 1: Reducción de tiempos de espera en...</li>
-                <li>Sinergia 2: Optimización de inventario compartido...</li>
-                <li>Sinergia 3: Creación de un "score" de prioridad unificado...</li>
-            </ul>
+                <span class="highlight-number">50%</span> <span class="highlight-text">reducción promedio en los costos de inversión.</span>
+                 <p>Costo del proyecto: MM$540 en total, distribuidos en MM$270 durante el año 0 (150 equipos) y MM$270 en el año 1 (150 equipos adicionales).​</p> </div> <div class="visual-content"> <img src="figs/voltaje.jpg" alt="Imagen Proyecto 1"> </div> </div> </div> <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> <div class="status-tag">En Progreso</div> <div class="kicker">1. Contexto: El Desafío [Proyecto 2]</div> <h2>Título del Proyecto 2</h2> <div class="title-tags-container"> <div class="title-tag">Tag A</div> <div class="title-tag">Tag B</div> </div> <p>Descripción breve del problema o desafío del Proyecto 2.</p> <span class="highlight-number">XX%</span> <span class="highlight-text">de algún indicador clave.</span> <p>Consecuencias de este problema.</p> </div> <div class="visual-content"> <img src="https://via.placeholder.com/450x300/d0eeff/074177?text=Proyecto+2" alt="Imagen Proyecto 2"> </div> </div> </div> <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> <div class="status-tag">Planificado</div> <div class="kicker">1. Contexto: El Desafío [Proyecto 3]</div> <h2>Título del Proyecto 3</h2> <div class="title-tags-container"> <div class="title-tag">Tag C</div> </div> <p>Descripción breve del problema o desafío del Proyecto 3.</p> <span class="highlight-number">YY</span> <span class="highlight-text">unidades afectadas.</span> <p>Consecuencias de este problema.</p> </div> <div class="visual-content"> <img src="https://via.placeholder.com/450x300/dbe4ed/4f1fff?text=Proyecto+3" alt="Imagen Proyecto 3"> </div> </div> </div> <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> <div class="status-tag">Terminado</div> <div class="kicker">1. Contexto: El Desafío [Proyecto 4]</div> <h2>Título del Proyecto 4</h2> <div class="title-tags-container"> <div class="title-tag">Tag D</div> <div class="title-tag">Tag E</div> <div class="title-tag">Tag F</div> </div> <p>Descripción breve del problema o desafío del Proyecto 4.</p> <span class="highlight-number">ZZ%</span> <span class="highlight-text">de reducción esperada.</span> <p>Consecuencias de este problema.</p> </div> <div class="visual-content"> <img src="https://via.placeholder.com/450x300/d0eeff/092754?text=Proyecto+4" alt="Imagen Proyecto 4"> </div> </div> </div> <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> <div class="status-tag">En Progreso</div> <div class="kicker">1. Contexto: El Desafío [Proyecto 5]</div> <h2>Título del Proyecto 5</h2> <div class="title-tags-container"> <div class="title-tag">Tag G</div> </div> <p>Descripción breve del problema o desafío del Proyecto 5.</p> <span class="highlight-number">$$$</span> <span class="highlight-text">costo actual.</span> <p>Consecuencias de este problema.</p> </div> <div class="visual-content"> <img src="https://via.placeholder.com/450x300/dbe4ed/074177?text=Proyecto+5" alt="Imagen Proyecto 5"> </div> </div> </div> <div class="content-card"> <div class="slide-content-split"> <div class="text-content"> <div class="status-tag">Planificado</div> <div class="kicker">1. Contexto: El Desafío [Proyecto 6]</div> <h2>Título del Proyecto 6</h2> <div class="title-tags-container"> <div class="title-tag">Tag H</div> <div class="title-tag">Tag I</div> </div> <p>Descripción breve del problema o desafío del Proyecto 6.</p> <span class="highlight-number">??</span> <span class="highlight-text">incertidumbre.</span> <p>Consecuencias de este problema.</p> </div> <div class="visual-content"> <img src="https://via.placeholder.com/450x300/d0eeff/4f1fff?text=Proyecto+6" alt="Imagen Proyecto 6"> </div> </div> </div>
         </section>
 
         <section class="slide lessons-slide" data-agenda-item="4">
-            <div class="lessons-split-layout"> 
-                <div class="lessons-slide-content">
-                    
-                    <div class="kicker">4. Mejores Prácticas y Aprendizajes</div>
-                    
-                    <div class="title-intro-split">
-                        <h2>Lecciones Clave del Piloto</h2>
-                        <p>Lo que hemos aprendido en los últimos 3 meses y cómo define nuestra estrategia de escalamiento.</p>
-                    </div>
-                    
-                    <div class="lessons-container">
-                        <div class="lesson-box">
-                            <h3>1. Adopción de Usuarios y Capacitación</h3>
-                            <p>La estrategia de "onboarding" gamificado fue crucial para la rápida adopción y alta satisfacción del equipo.</p>
-                            <ul>
-                                <li>Adopción 30% más rápida de lo esperado.</li>
-                                <li>85% de satisfacción con la formación interactiva.</li>
-                                <li>Recomendación: Replicar modelo en futuras fases.</li>
-                            </ul>
-                        </div>
-                        <div class="lesson-box">
-                            <h3>2. Calidad del Dato y Requisitos de Integración</h3>
-                             <p>Se identificó una brecha crítica en la calidad/consistencia de los datos del ERP que afectó los pronósticos iniciales.</p>
-                             <ul>
-                                <li>Impacto negativo en la precisión.</li>
-                                <li>Prioridad #1 Fase 2: Saneamiento de datos y revisión de APIs.</li>
-                                <li>Es vital asegurar una fuente de datos impecable.</li>
-                            </ul>
-                        </div>
-                        <div class="lesson-box">
-                            <h3>3. Dependencias de Infraestructura</h3>
-                             <p>El rendimiento del motor de optimización fue intermitente debido a la latencia de la red Wi-Fi local.</p>
-                             <ul>
-                                <li>Causa raíz: Red de bodega, no el software.</li>
-                                <li>Acción requerida: Actualización de hardware de red antes de Fase 3.</li>
-                            </ul>
-                        </div>
-                        <div class="lesson-box">
-                            <h3>4. Solicitud de Nuevas Funcionalidades (Feedback)</h3>
-                            <p>Los operadores solicitaron unánimemente una función de "modo offline" para la app móvil no prevista inicialmente.</p>
-                            <ul>
-                                <li>Necesidad: Registrar entregas en zonas sin cobertura.</li>
-                                <li>Alta demanda justifica su priorización.</li>
-                                <li>Acción: Incluir en el próximo sprint de desarrollo.</li>
-                             </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="right-side-card">
-                    <h3>Impacto General y Próximos Desafíos</h3>
-                    <p>El piloto valida la hipótesis, pero revela la necesidad crítica de reforzar infraestructura de datos y red para escalar. El compromiso del equipo es fundamental.</p>
-                </div>
-            </div>
+             <div class="lessons-split-layout"> <div class="lessons-slide-content"> <div class="kicker">Kicker</div> <div class="title-intro-split">
+                 <h2>Lecciones Clave</h2> <p>Lo que hemos aprendido y cómo define nuestra estrategia de escalamiento.</p> </div> 
+                 <div class="lessons-container"> <div class="lesson-box"> <h3>1. Gobernanza: Comité Innovación Dx​</h3> 
+                    <p></p>
+                    <ul>
+                        <li>Alineado al proceso de incubación de iniciativas se tiene una instancia donde se visibilizan y se toman decisiones en base a presentaciones y datos, relacionadas con el aporte para cada línea de negocio, y para la distribuidora también, existe un sponsor (Subgerencia involucrada).​</li> 
+                    </ul>
+                     </div>
+                      <div class="lesson-box"> 
+                    <h3>2. Metodologías y Herramientas de Innovación​</h3> 
+                    <p></p>
+                     <ul>
+                        <li>Taller de Ideación: Se levantaron 160 ideas que dieron origen al Programa PEC con 5 ejes de trabajo y 50 iniciativas, hoy con 50% de avance.​</li> 
+                        <li>Taller de ideación-problematización con Google: se levantó necesidades de CCD y despacho automático de brigadas: motor de gestión inteligente​</li> 
+                    </ul>
+                     </div> <div class="lesson-box">
+                         <h3>3. Formación de Innovación​</h3>
+                          <p></p> 
+                          <ul> 
+                            <li>Cursos de Python (básico, medio y avanzado): Fortalecieron las capacidades analíticas de los equipos de negocio. En el SmartCrash Challenge, un 39% de los 24 inscritos pasó previamente por estos cursos, lo que les permitirá enfrentar el desafío con mejores herramientas.​</li> 
+                         </ul> 
+                        </div> <div class="lesson-box"> 
+                            <h3>4. Prácticas Culturales de Innovación​</h3>
+                             <p></p>
+                              <ul> 
+                                <li>Hackathon Dx: La 1ª edición validó la hackathon como práctica efectiva de co-creación y resolución rápida, con colaboración transversal. ​</li>
+                                 <li>Desafíos Dx: Nueva forma de participar y poner conocimiento de forma asincrónica. Se plantea problemática y se espera una solución en un tiempo definido (1 mes). Se inscribieron 24 personas en 9 equipos de trabajo para el primer desafío.​</li> 
+                                </ul> </div> </div> </div> <div class="right-side-card"> 
+                                    <h3>Lecciones aprendidas​</h3> 
+                              <ul> 
+                                <li>Tiempo reservado de personas para avanzar iniciativas de valor ​</li>
+                                 <li>Incorporar desde un inicio la valorización de iniciativas​​</li> 
+                                <li>Buena selección de participantes en procesos de innovación, buscar apoyo de sponsor. ​Cuando no hay convencimiento de la iniciativa, socializar y mostrar datos.​​</li>
+                                 <li>Es fundamental alinear expectativas desde el inicio, dejando claro el propósito del proceso y cómo aporta valor real. ​​</li> 
+                                <li>​Se requiere mayor participación de liderazgos internos que validen el espacio y promuevan la participación activa.​</li>
+                                 <li>adaptar metodología al contexto operativo, incorporando herramientas más visuales, dinámicas y centradas en la experiencia del usuario.​​</li>
+                                 <li>Visibilizar los aportes del levantamiento en la aceleración de iniciativas, para dar sentido y legitimidad al trabajo realizado.​</li>
+                                 <li>estrategia de cambio o gestion del cambio, no solo de una buena herramienta o método​</li>
+                                 <li>Generar un repositorio de iniciativas vistas abierto a Dx.</li>
+                                 <li>Generar un repositorio de iniciativas vistas en visitas o viajes.​</li>
+                                </ul>                                
+                                </div> </div>
         </section>
 
         <section class="slide" data-agenda-item="5">
-            <div class="kicker">5. Próximos Pasos</div>
-            <h2>Roadmap de Implementación</h2>
-            <p>Un despliegue ágil y medible para asegurar la adopción y el éxito.</p>
-            
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="200" viewBox="0 0 800 150" style="max-width: 900px; margin-top: 2rem;">
-                <line x1="50" y1="75" x2="750" y2="75" stroke="#dee2e6" stroke-width="4"/>
-                <line x1="50" y1="75" x2="400" y2="75" stroke="var(--color-primary)" stroke-width="4"/> <g>
-                    <circle cx="100" cy="75" r="10" fill="var(--color-primary)"/>
-                    <text x="100" y="120" font-size="14" text-anchor="middle" fill="var(--color-text)">Fase 1: Kick-off</text>
-                    <text x="100" y="140" font-size="12" text-anchor="middle" fill="#6c757d">Q4 2025</text>
-                </g>
-                <g>
-                    <circle cx="350" cy="75" r="10" fill="var(--color-primary)"/>
-                    <text x="350" y="120" font-size="14" text-anchor="middle" fill="var(--color-text)">Fase 2: Piloto (Logística)</text>
-                    <text x="350" y="140" font-size="12" text-anchor="middle" fill="#6c757d">Q1 2026</text>
-                </g>
-                <g>
-                    <circle cx="600" cy="75" r="10" fill="#adb5bd"/>
-                    <text x="600" y="120" font-size="14" text-anchor="middle" fill="var(--color-text)">Fase 3: Despliegue Total</text>
-                    <text x="600" y="140" font-size="12" text-anchor="middle" fill="#6c757d">Q2 2026</text>
-                </g>
-            </svg>
+             <h2>Hoja de Ruta o hitos clave para los próximos meses​</h2>
+             <p></p>
+
+             <!-- Roadmap Nov 2025 – Feb 2026 -->
+             <div class="roadmap-wrapper">
+                <div class="roadmap-header">
+                    <div class="roadmap-title">Roadmap · Nov 2025 – Feb 2026</div>
+                    <div class="roadmap-legend">
+                        <span class="legend-pill"><span class="legend-dot" style="background: var(--color-primary);"></span> Estratégico</span>
+                        <span class="legend-pill"><span class="legend-dot" style="background: #e9ecef; border:1px solid #cfd4da;"></span> Operativo</span>
+                        <span class="legend-pill"><span class="legend-dot" style="background: var(--color-text);"></span> Personas/Cultura</span>
+                        <span class="legend-pill"><span class="legend-dot" style="background: var(--color-text-secondary);"></span> Procesos</span>
+                    </div>
+                </div>
+
+                <div class="timeline-months">
+                    <div>Nov 2025</div>
+                    <div>Dic 2025</div>
+                    <div>Ene 2026</div>
+                    <div>Feb 2026</div>
+                </div>
+
+                <div class="timeline-grid" aria-label="Línea de tiempo Nov 2025 a Feb 2026">
+                    <!-- Estratégico -->
+                    <div class="timeline-item cat-estrategico" style="grid-column: 1 / span 1;">
+                        <span class="ti-title">Jornada Sinergias con Tx</span>
+                        <span class="ti-badge">Estratégico</span>
+                    </div>
+                    <div class="timeline-item cat-estrategico" style="grid-column: 2 / span 2;">
+                        <span class="ti-title">Revisión de alineamiento: metas y métricas</span>
+                        <span class="ti-badge">Dic–Ene</span>
+                    </div>
+                    <div class="timeline-item cat-estrategico" style="grid-column: 2 / span 2;">
+                        <span class="ti-title">Ajustes al modelo de gobernanza</span>
+                        <span class="ti-badge">Dic–Ene</span>
+                    </div>
+
+                    <!-- Operativo -->
+                    <div class="timeline-item cat-operativo" style="grid-column: 1 / span 2;">
+                        <span class="ti-title">Comité fin de año: probar o escalar</span>
+                        <span class="ti-badge">Nov–Dic</span>
+                    </div>
+                    <div class="timeline-item cat-operativo" style="grid-column: 1 / span 1;">
+                        <span class="ti-title">Cierre desafío SmartCrash y resultados</span>
+                        <span class="ti-badge">Operativo</span>
+                    </div>
+                    <div class="timeline-item cat-operativo" style="grid-column: 2 / span 1;">
+                        <span class="ti-title">Evaluación de pilotos e iniciativas por proceso</span>
+                        <span class="ti-badge">Operativo</span>
+                    </div>
+                    <div class="timeline-item cat-operativo" style="grid-column: 2 / span 3;">
+                        <span class="ti-title">Inicio programa “memoristas”</span>
+                        <span class="ti-badge">Dic–Ene–Feb</span>
+                    </div>
+
+                    <!-- Personas / Cultura -->
+                    <div class="timeline-item cat-personas" style="grid-column: 1 / span 2;">
+                        <span class="ti-title">Concurso de Ideas: foco y lanzamiento</span>
+                        <span class="ti-badge">Nov–Dic</span>
+                    </div>
+                    <div class="timeline-item cat-personas" style="grid-column: 3 / span 1;">
+                        <span class="ti-title">Definir objetivos cultura & actitud innovadora 2026</span>
+                        <span class="ti-badge">Enero</span>
+                    </div>
+                    <div class="timeline-item cat-personas" style="grid-column: 4 / span 1;">
+                        <span class="ti-title">Desarrollo de Solvers</span>
+                        <span class="ti-badge">Febrero</span>
+                    </div>
+
+                    <!-- Procesos -->
+                    <div class="timeline-item cat-procesos" style="grid-column: 3 / span 1;">
+                        <span class="ti-title">Revisión proceso 2025 / feedback y ajustes</span>
+                        <span class="ti-badge">Procesos</span>
+                    </div>
+                </div>
+             </div>
+             <!-- Fin Roadmap -->
+
         </section>
+
         
         <section class="slide end-slide" data-agenda-item="0">
-            <h2>Gracias.</h2>
-            <p>Abrimos el espacio para preguntas.</p>
+             <h2>Gracias.</h2><p>Abrimos el espacio para preguntas.</p>
         </section>
 
     </div>
@@ -724,11 +1637,59 @@
             let currentSlide = 0;
             const totalSlides = slides.length;
 
-            function showSlide(index) {
-                // Ocultar la diapositiva actual
-                slides[currentSlide].classList.remove('active');
+            const bubbleChartData = [
+                { name: 'Proyecto A', impact: 85, effort: 25, value: 80, color: 'rgba(79, 31, 255, 0.7)', shadow: 'rgba(79, 31, 255, 0.3)' },
+                { name: 'Proyecto B (Core)', impact: 70, effort: 70, value: 120, color: 'rgba(7, 65, 119, 0.7)', shadow: 'rgba(7, 65, 119, 0.3)' },
+                { name: 'Quick Win', impact: 30, effort: 35, value: 50, color: 'rgba(219, 228, 237, 0.9)', shadow: 'rgba(0,0,0, 0.1)', textColor: '#333', border: '1px solid #aaa' },
+                { name: 'Proyecto C', impact: 15, effort: 80, value: 60, color: 'rgba(208, 238, 255, 0.8)', shadow: 'rgba(0,0,0, 0.1)', textColor: '#333', border: '1px solid #aaa' },
+            ];
 
-                // Validar límites
+            function renderBubbleChart() {
+                const container = document.getElementById('bubble-chart-area');
+                if (!container) return; 
+                
+                container.innerHTML = ''; 
+
+                const minSize = 40; 
+                const maxSize = 120; 
+                const values = bubbleChartData.map(d => d.value);
+                const minValue = values.length > 0 ? Math.min(...values) : 0;
+                const maxValue = values.length > 0 ? Math.max(...values) : 0;
+
+                bubbleChartData.forEach(data => {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+                    bubble.textContent = data.name;
+
+                    const topPercent = 100 - data.impact;
+                    const leftPercent = data.effort;
+
+                    let size = minSize;
+                     if (maxValue > minValue) {
+                        size = minSize + ((data.value - minValue) / (maxValue - minValue)) * (maxSize - minSize);
+                    } else if (bubbleChartData.length > 0) {
+                        size = (minSize + maxSize) / 2; 
+                    }
+                    
+                    bubble.style.top = `${topPercent}%`;
+                    bubble.style.left = `${leftPercent}%`;
+                    bubble.style.width = `${size}px`;
+                    bubble.style.height = `${size}px`;
+                    bubble.style.backgroundColor = data.color;
+                    bubble.style.boxShadow = `0 4px 10px ${data.shadow}`;
+                    if(data.textColor) bubble.style.color = data.textColor;
+                    if(data.border) bubble.style.border = data.border;
+                    
+                     if (size < 60) {
+                         bubble.style.fontSize = '0.7rem';
+                     }
+
+                    container.appendChild(bubble);
+                });
+            }
+
+            function showSlide(index) {
+                slides[currentSlide].classList.remove('active');
                 if (index >= totalSlides) {
                     currentSlide = totalSlides - 1;
                 } else if (index < 0) {
@@ -736,16 +1697,26 @@
                 } else {
                     currentSlide = index;
                 }
-
-                // Mostrar la nueva diapositiva
                 const activeSlide = slides[currentSlide];
                 activeSlide.classList.add('active');
                 
-                // Actualizar barra de progreso
                 updateProgress();
-                
-                // Actualizar la barra de agenda
                 updateAgendaTracker(activeSlide);
+
+                if (activeSlide.contains(document.getElementById('maturityPath'))) {
+                    const path = document.getElementById('maturityPath');
+                    if (path) { 
+                        const length = path.getTotalLength();
+                        path.style.animation = 'none';
+                        path.offsetHeight; 
+                        path.style.strokeDasharray = length;
+                        path.style.strokeDashoffset = length;
+                        path.style.animation = null; 
+                    }
+                }
+                 if (activeSlide.contains(document.getElementById('bubble-chart-area'))) {
+                    renderBubbleChart();
+                }
             }
 
             function updateProgress() {
@@ -754,25 +1725,17 @@
             }
             
             function updateAgendaTracker(activeSlide) {
-                // 1. Obtener el índice de la agenda desde el atributo data
                 const agendaIndex = activeSlide.getAttribute('data-agenda-item');
-                
-                // 2. Limpiar todos los items de la agenda
                 agendaItems.forEach(item => item.classList.remove('active'));
                 
-                // 3. Activar el item correcto y mostrar/ocultar la barra
                 if (agendaIndex && agendaIndex !== '0') {
-                    // MOSTRAR la barra
                     agendaTracker.style.visibility = 'visible';
                     agendaTracker.style.opacity = '1';
-                    
-                    // Activar el item
                     const trackerItem = document.getElementById(`agenda-item-${agendaIndex}`);
                     if (trackerItem) {
                         trackerItem.classList.add('active');
                     }
                 } else {
-                    // OCULTAR la barra (para slides 0)
                     agendaTracker.style.visibility = 'hidden';
                     agendaTracker.style.opacity = '0';
                 }
@@ -790,11 +1753,9 @@
                 }
             }
 
-            // Event Listeners para botones
             nextButton.addEventListener('click', nextSlide);
             prevButton.addEventListener('click', prevSlide);
 
-            // Event Listeners para teclado
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
                     nextSlide();
@@ -803,8 +1764,17 @@
                 }
             });
 
-            // Iniciar en la primera diapositiva
             showSlide(0); 
+
+            // Toggle de la lista en "Captura de valor estimada por Proceso"
+            const valueExtraBtn = document.getElementById('value-extra-button');
+            const valueExtraPanel = document.getElementById('value-extra-panel');
+            if (valueExtraBtn && valueExtraPanel) {
+                valueExtraBtn.addEventListener('click', () => {
+                    const isOpen = valueExtraPanel.classList.toggle('open');
+                    valueExtraBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            }
         });
     </script>
 
